@@ -25,6 +25,7 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.get("/api/:date?", (req, res) => {
+  console.log(req);
   if (req) {
     res.json({unix: Number(req)});
   };

@@ -27,7 +27,8 @@ app.get("/api/hello", function (req, res) {
 app.get("/api/:date?", (req, res) => {
   console.log(req.params.date);
   if (req) {
-    res.json({unix: Number(req)});
+    let num = Date.parse(req.params.date);
+    res.json({unix: Number(num)});
   };
 });
 

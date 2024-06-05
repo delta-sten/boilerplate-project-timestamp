@@ -25,13 +25,22 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.get("/api/:date?", (req, res) => {
-  console.log(req.params.date);
+  //console.log(req.params.date);
   if (req) {
     let num = Date.parse(req.params.date);
     res.json({unix: Number(num)});
   };
 });
 
+app.get("/api/:date?", (req, res) => {
+  if (req) {
+    console.log(req)
+    const options = {year: 'numeric', month: 'long', day: 'numeric'};
+    let string = 
+
+    res.json({utc: });
+  };
+});
 
 
 // Listen on port set in environment variable or default to 3000

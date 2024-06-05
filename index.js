@@ -36,9 +36,9 @@ app.get("/api/:date?", (req, res) => {
   if (req) {
     console.log(req)
     const options = {year: 'numeric', month: 'long', day: 'numeric'};
-    let string = 
+    //let string = 
 
-    res.json({utc: });
+    res.json({/*utc:*/ });
   };
 });
 

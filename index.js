@@ -19,6 +19,7 @@ app.get("/", function (req, res) {
 });
 
 
+
 // your first API endpoint... 
 app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
@@ -27,21 +28,18 @@ app.get("/api/hello", function (req, res) {
 app.get("/api/:date?", (req, res) => {
   console.log(req.params.date);
   if (req) {
-    let num = Date.parse(req.params.date);
-    res.json({unix: Number(num)});
+    let timestamp = Date.parse(req.params.date);
+    let date = new Date(timestamp);
+    console.log(date.getFullyear);
+    let weekDay = date.toLocaleDateString('en-US', {weekday: 'short'});
+    console.log(weekDay);
+
+    res.json({
+      unix: Number(timestamp),
+      //utc: 
+    });
   };
 });
-
-app.get("/api/:date?", (req, res) => {
-  if (req) {
-    console.log(req)
-    const options = {year: 'numeric', month: 'long', day: 'numeric'};
-    //let string = 
-
-    res.json({/*utc:*/ });
-  };
-});
-
 
 // Listen on port set in environment variable or default to 3000
 var listener = app.listen(process.env.PORT || 3000, function () {

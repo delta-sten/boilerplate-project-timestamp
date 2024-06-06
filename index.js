@@ -30,9 +30,10 @@ app.get("/api/:date?", (req, res) => {
   if (req) {
     let timestamp = Date.parse(req.params.date);
     let date = new Date(timestamp);
-    console.log('date.getFullyear' + date.getFullyear);
+    let year = date.toLocaleDateString('en-US', {year: 'numeric'});
+    console.log('year ' + year);
     let weekDay = date.toLocaleDateString('en-US', {weekday: 'short'});
-    console.log('weekDay' + weekDay);
+    console.log('weekDay ' + weekDay);
 
     res.json({
       unix: Number(timestamp),

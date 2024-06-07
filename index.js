@@ -37,10 +37,14 @@ app.get("/api/:date?", (req, res) => {
     let timestamp;
     if (isInt(req.params.date)) {
       timestamp = req.params.date;
-      console.log('integer timestamp: ' + timestamp);
+      //console.log('integer timestamp: ' + timestamp);
     } else {
       timestamp = Date.parse(req.params.date);
       console.log('converted timestamp: ' + timestamp);
+      if (isInt(timestamp)) {
+        console.log('converted timestamp is an integer');
+      }
+
     }
     let date = new Date(timestamp);
     let weekDay = date.toLocaleDateString('en-US', {weekday: 'short'});

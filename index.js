@@ -37,17 +37,19 @@ app.get("/api/:date?", (req, res) => {
     let timestamp;
     if (isInt(req.params.date)) {
       timestamp = req.params.date;
+      console.log('integer timestamp: ' + timestamp);
     } else {
       timestamp = Date.parse(req.params.date);
+      console.log('converted timestamp: ' + timestamp);
     }
     let date = new Date(timestamp);
     let weekDay = date.toLocaleDateString('en-US', {weekday: 'short'});
-    console.log('weekDay: ' + weekDay);
+    //console.log('weekDay: ' + weekDay);
     let day = date.toLocaleDateString('en-US', {day: 'numeric'});
-    console.log('day: ' + day);
+    //console.log('day: ' + day);
     let month = date.toLocaleDateString('en-US', {month: 'short'});
     let year = date.toLocaleDateString('en-US', {year: 'numeric'});
-    console.log('year: ' + year);
+    //console.log('year: ' + year);
 
     res.json({
       unix: Number(timestamp),

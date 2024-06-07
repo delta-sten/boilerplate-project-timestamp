@@ -34,10 +34,11 @@ function isInt(value) {
 app.get("/api/:date?", (req, res) => {
   if (req) {
     //console.log('Date: ' + req.params.date);
+    let timestamp;
     if (isInt(req.params.date)) {
-      let timestamp = req.params.date;
+      timestamp = req.params.date;
     } else {
-      let timestamp = Date.parse(req.params.date);
+      timestamp = Date.parse(req.params.date);
     }
     let date = new Date(timestamp);
     let year = date.toLocaleDateString('en-US', {year: 'numeric'});

@@ -25,15 +25,24 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
+function isInt(value) {
+  return !isNaN(value) && 
+         parseInt(Number(value)) == value && 
+         !isNaN(parseInt(value, 10));
+}
+
 app.get("/api/:date?", (req, res) => {
-  console.log(req.params.date);
   if (req) {
+    console.log('Date: ' + req.params.date);
+    if (isInt(req.params.date)) {
+      console.log("it's an integer");
+    }
     let timestamp = Date.parse(req.params.date);
     let date = new Date(timestamp);
     let year = date.toLocaleDateString('en-US', {year: 'numeric'});
-    console.log('year ' + year);
+    //console.log('year ' + year);
     let weekDay = date.toLocaleDateString('en-US', {weekday: 'short'});
-    console.log('weekDay ' + weekDay);
+    //console.log('weekDay ' + weekDay);
 
     res.json({
       unix: Number(timestamp),

@@ -33,7 +33,7 @@ function isInt(value) {
 
 app.get("/api/:date?", (req, res) => {
   if (req) {
-    //console.log('Date: ' + req.params.date);
+    console.log('Date: ' + req.params.date);
     let timestamp;
     if (isInt(req.params.date)) {
       timestamp = req.params.date;
@@ -41,10 +41,13 @@ app.get("/api/:date?", (req, res) => {
       timestamp = Date.parse(req.params.date);
     }
     let date = new Date(timestamp);
-    let year = date.toLocaleDateString('en-US', {year: 'numeric'});
-    //console.log('year ' + year);
     let weekDay = date.toLocaleDateString('en-US', {weekday: 'short'});
-    //console.log('weekDay ' + weekDay);
+    console.log('weekDay: ' + weekDay);
+    let day = date.toLocaleDateString('en-US', {day: 'numeric'});
+    console.log('day: ' + day);
+    let month = date.toLocaleDateString('en-US', {month: 'short'});
+    let year = date.toLocaleDateString('en-US', {year: 'numeric'});
+    console.log('year: ' + year);
 
     res.json({
       unix: Number(timestamp),

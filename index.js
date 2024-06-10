@@ -49,12 +49,12 @@ app.get("/api/:date?", (req, res) => {
     let date = new Date(timestamp);
     console.log('date: ' + date, 'type: ' + typeof(date));
     let NewWeekDay = date.getDay();
-    console.log(NewWeekDay);
+    console.log('NewWeekDay: ' + NewWeekDay);
 
     let now_utc = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(),
                 date.getUTCDate(), date.getUTCHours(),
                 date.getUTCMinutes(), date.getUTCSeconds());
-    console.log(now_utc);
+    console.log('now_utc: ' + now_utc);
     let weekDay = date.toLocaleDateString('en-US', {weekday: 'short'});
     console.log('weekDay: ' + weekDay);
     let day = date.toLocaleDateString('en-US', {day: 'numeric'});

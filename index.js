@@ -37,31 +37,32 @@ app.get("/api/:date?", (req, res) => {
     let timestamp;
     if (isInt(req.params.date)) {
       timestamp = req.params.date;
-      console.log('integer timestamp: ' + timestamp);
+      //console.log('integer timestamp: ' + timestamp);
     } else {
       timestamp = Date.parse(req.params.date);
-      console.log('converted timestamp: ' + timestamp);
+      //console.log('converted timestamp: ' + timestamp);
       if (isInt(timestamp)) {
-        console.log('converted timestamp is an integer');
+        //console.log('converted timestamp is an integer');
       }
 
     }
     let date = new Date(timestamp);
-    console.log('date: ' + date, 'type: ' + typeof(date));
+    //console.log('date: ' + date, 'type: ' + typeof(date));
     let NewWeekDay = date.getDay();
-    console.log('NewWeekDay: ' + NewWeekDay);
+    //console.log('NewWeekDay: ' + NewWeekDay);
 
     let now_utc = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(),
                 date.getUTCDate(), date.getUTCHours(),
                 date.getUTCMinutes(), date.getUTCSeconds());
-    console.log('now_utc: ' + now_utc);
-    let weekDay = date.toLocaleDateString('en-US', {weekday: 'short'});
-    console.log('weekDay: ' + weekDay);
-    let day = date.toLocaleDateString('en-US', {day: 'numeric'});
-    console.log('new day: ' + date.getUTCDate());
-    console.log('old day: ' + day);
-    let month = date.toLocaleDateString('en-US', {month: 'short'});
-    let year = date.toLocaleDateString('en-US', {year: 'numeric'});
+      
+    //console.log('now_utc: ' + now_utc);
+    let weekDay = date.getUTCDay();
+    console.log('date.getUTCDay(): ' + weekDay);
+    let day = date.getUTCDate();
+    console.log('date.getUTCDate(): ' + day);
+    let month = date.getUTCMonth();
+    console.log("month: " + month);
+    let year = date.getUTCFullYear();
     console.log('year: ' + year);
     console.log('____________');
 

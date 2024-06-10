@@ -58,10 +58,12 @@ app.get("/api/:date?", (req, res) => {
     let weekDay = date.toLocaleDateString('en-US', {weekday: 'short'});
     console.log('weekDay: ' + weekDay);
     let day = date.toLocaleDateString('en-US', {day: 'numeric'});
-    console.log('day: ' + day);
+    console.log('new day: ' + date.getUTCDate());
+    console.log('old day: ' + day);
     let month = date.toLocaleDateString('en-US', {month: 'short'});
     let year = date.toLocaleDateString('en-US', {year: 'numeric'});
     console.log('year: ' + year);
+    console.log('____________');
 
 /*
 .toLocaleString('en-US', { timeZone: 'America/New_York' })

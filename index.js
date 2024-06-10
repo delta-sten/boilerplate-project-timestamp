@@ -47,7 +47,7 @@ app.get("/api/:date?", (req, res) => {
 
     }
     console.log('timestamp: ' + timestamp + 'typeof(timestamp)' + typeof(timestamp));
-    let date = new Date(timestamp);
+    let date = new Date(parseInt(num, timestamp));
     //console.log('date: ' + date, 'type: ' + typeof(date));
     let NewWeekDay = date.getDay();
     //console.log('NewWeekDay: ' + NewWeekDay);

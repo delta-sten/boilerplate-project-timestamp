@@ -61,8 +61,32 @@ app.get("/api/:date?", (req, res) => {
     let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
     console.log('weekDay: ' + weekDays[weekDay]);
     let day = date.getUTCDate();
-    //if (day < 10)
-    console.log('date.getUTCDate(): ' + day + ' typeof(day): ' + typeof(day));
+    let returnedDay;
+    if (day < 10) {
+      if (day === 1) {
+        returnedDay = "01";
+      } else if (day === 2) {
+        returnedDay = "02";
+      }else if (day === 3) {
+        returnedDay = "03";
+      } else if (day === 4) {
+        returnedDay = "04";
+      } else if (day === 5) {
+        returnedDay = "05";
+      } else if (day === 6) {
+        returnedDay = "06";
+      } else if (day === 7) {
+        returnedDay = "07";
+      } else if (day === 8) {
+        returnedDay = "08";
+      } else if (day === 9) {
+        returnedDay = "09";
+      }
+    } else {
+      returnedDay = day.toString();
+    }
+
+    console.log('returnedDay: ' + returnedDay + ' typeof(returnedDay): ' + typeof(returnedDay));
     let month = date.getUTCMonth();
     console.log("month: " + month);
     let year = date.getUTCFullYear();

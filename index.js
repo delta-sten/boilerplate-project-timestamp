@@ -104,7 +104,7 @@ app.get("/api/:date?", (req, res) => {
 
     res.json({
       unix: Number(timestamp),
-      //utc: 
+      utc: finalResponse
     });
   };
 });

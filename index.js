@@ -46,19 +46,20 @@ app.get("/api/:date?", (req, res) => {
       }
 
     }
-    console.log('timestamp: ' + timestamp + 'typeof(timestamp)' + typeof(timestamp));
+    //console.log('timestamp: ' + timestamp + 'typeof(timestamp)' + typeof(timestamp));
     let date = new Date(parseInt(timestamp));
     //console.log('date: ' + date, 'type: ' + typeof(date));
-    let NewWeekDay = date.getDay();
+    //let NewWeekDay = date.getDay();
     //console.log('NewWeekDay: ' + NewWeekDay);
 
-    let now_utc = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(),
+    /*let now_utc = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(),
                 date.getUTCDate(), date.getUTCHours(),
-                date.getUTCMinutes(), date.getUTCSeconds());
+                date.getUTCMinutes(), date.getUTCSeconds()); */
       
     //console.log('now_utc: ' + now_utc);
     let weekDay = date.getUTCDay();
-    console.log('date.getUTCDay(): ' + weekDay);
+    let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+    console.log('weekDay: ' + weekDays[weekDay]);
     let day = date.getUTCDate();
     console.log('date.getUTCDate(): ' + day);
     let month = date.getUTCMonth();

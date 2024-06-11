@@ -61,7 +61,8 @@ app.get("/api/:date?", (req, res) => {
     let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
     console.log('weekDay: ' + weekDays[weekDay]);
     let day = date.getUTCDate();
-    console.log('date.getUTCDate(): ' + day);
+    //if (day < 10)
+    console.log('date.getUTCDate(): ' + day) + 'typeof(day): ' + typeof(day);
     let month = date.getUTCMonth();
     console.log("month: " + month);
     let year = date.getUTCFullYear();

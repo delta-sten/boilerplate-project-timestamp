@@ -59,7 +59,7 @@ app.get("/api/:date?", (req, res) => {
     //console.log('now_utc: ' + now_utc);
     let weekDay = date.getUTCDay();
     let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
-    console.log('weekDay: ' + weekDays[weekDay]);
+    //console.log('weekDay: ' + weekDays[weekDay]);
     let day = date.getUTCDate();
     let returnedDay;
     if (day < 10) {
@@ -86,12 +86,16 @@ app.get("/api/:date?", (req, res) => {
       returnedDay = day.toString();
     }
 
-    console.log('returnedDay: ' + returnedDay + ' typeof(returnedDay): ' + typeof(returnedDay));
+    //console.log('returnedDay: ' + returnedDay + ' typeof(returnedDay): ' + typeof(returnedDay));
     let month = date.getUTCMonth();
     let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    console.log("month: " + months[month]);
+    //console.log("month: " + months[month]);
     let year = date.getUTCFullYear();
-    console.log('year: ' + year);
+    let returnedYear = year.toString();
+    //console.log('year: ' + returnedYear);
+    let time = "00:00:00 GMT";
+    let finalResponse = weekDays[weekDay] + ", " + returnedDay + " " + months[month] + " " + returnedYear + " 00:00:00 GMT";
+    console.log('finalResponse: ' + finalResponse);
     console.log('____________');
 
 /*

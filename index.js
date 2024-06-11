@@ -88,7 +88,8 @@ app.get("/api/:date?", (req, res) => {
 
     console.log('returnedDay: ' + returnedDay + ' typeof(returnedDay): ' + typeof(returnedDay));
     let month = date.getUTCMonth();
-    console.log("month: " + month);
+    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    console.log("month: " + months[month]);
     let year = date.getUTCFullYear();
     console.log('year: ' + year);
     console.log('____________');

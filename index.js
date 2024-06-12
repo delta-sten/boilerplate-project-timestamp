@@ -33,6 +33,7 @@ function isInt(value) {
 
 app.get("/api/:date?", (req, res) => {
   if (req) {
+    console.log('typeof(req.params.date): ' + typeof(req.params.date));
     console.log('Date: ' + req.params.date);
     let timestamp;
     if (isInt(req.params.date)) {

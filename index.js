@@ -33,71 +33,9 @@ function isInt(value) {
 
 app.get("/api/:date?", (req, res) => {
   let timestamp;
-  let now;
-  //let finalResponses;
-  //let finalResponse;
   if (req.params.date === undefined) {
     timestamp = Date.now();
-    let dates = new Date(parseInt(timestamp));
-    //console.log('date: ' + date, 'type: ' + typeof(date));
-    //let NewWeekDay = date.getDay();
-    //console.log('NewWeekDay: ' + NewWeekDay);
-
-    /*let now_utc = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(),
-                date.getUTCDate(), date.getUTCHours(),
-                date.getUTCMinutes(), date.getUTCSeconds()); */
-      
-    //console.log('now_utc: ' + now_utc);
-    let weekDays = dates.getUTCDay();
-    let weekDayss = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
-    //console.log('weekDay: ' + weekDays[weekDay]);
-    let days = dates.getUTCDate();
-    let returnedDays;
-    if (days < 10) {
-      if (days === 1) {
-        returnedDays = "01";
-      } else if (days === 2) {
-        returnedDays = "02";
-      }else if (days === 3) {
-        returnedDays = "03";
-      } else if (days === 4) {
-        returnedDays = "04";
-      } else if (days === 5) {
-        returnedDays = "05";
-      } else if (days === 6) {
-        returnedDays = "06";
-      } else if (days === 7) {
-        returnedDays = "07";
-      } else if (days === 8) {
-        returnedDays = "08";
-      } else if (days === 9) {
-        returnedDays = "09";
-      }
-    } else {
-      returnedDays = days.toString();
-    }
-
-    //console.log('returnedDay: ' + returnedDay + ' typeof(returnedDay): ' + typeof(returnedDay));
-    let months = dates.getUTCMonth();
-    let monthss = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    //console.log("month: " + months[month]);
-    let years = dates.getUTCFullYear();
-    let returnedYears = years.toString();
-    //console.log('year: ' + returnedYear);
-    let finalResponses = weekDayss[weekDays] + ", " + returnedDays + " " + monthss[months] + " " + returnedYears + " 00:00:00 GMT";
-
-    now = true;
-/*
-    res.json({
-      unix: Number(timestamp),
-      utc: finalResponses
-    })
-    */
-  }
-  if (req) {
-    console.log('typeof(req.params.date): ' + typeof(req.params.date));
-    console.log('Date: ' + req.params.date);
-
+  } else {
     if (isInt(req.params.date)) {
       timestamp = req.params.date;
       //console.log('integer timestamp: ' + timestamp);
@@ -107,8 +45,12 @@ app.get("/api/:date?", (req, res) => {
       if (isInt(timestamp)) {
         //console.log('converted timestamp is an integer');
       }
-
     }
+  }
+
+    //console.log('typeof(req.params.date): ' + typeof(req.params.date));
+    //console.log('Date: ' + req.params.date);
+
     //console.log('timestamp: ' + timestamp + 'typeof(timestamp)' + typeof(timestamp));
     let date = new Date(parseInt(timestamp));
     //console.log('date: ' + date, 'type: ' + typeof(date));
@@ -163,23 +105,9 @@ app.get("/api/:date?", (req, res) => {
 /*
 .toLocaleString('en-US', { timeZone: 'America/New_York' })
 */
-    now = false;
-    /*
-    res.json({
-      unix: Number(timestamp),
-      utc: finalResponse
-    });
-    */
-  };
-  let finalResponseACTUALLY;
-  if (now) {
-    finalResponseACTUALLY = finalResponses;
-  } else {
-    finalResponseACTUALLY = finalReponse;
-  }
   res.json({
     unix: Number(timestamp),
-    utc: finalResponseACTUALLY
+    utc: finalResponse
   })
 
 });

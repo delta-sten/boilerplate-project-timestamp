@@ -34,8 +34,8 @@ function isInt(value) {
 app.get("/api/:date?", (req, res) => {
   let timestamp;
   let now;
-  let finalResponses;
-  let finalResponse;
+  //let finalResponses;
+  //let finalResponse;
   if (req.params.date === undefined) {
     timestamp = Date.now();
     let dates = new Date(parseInt(timestamp));
@@ -84,7 +84,7 @@ app.get("/api/:date?", (req, res) => {
     let years = dates.getUTCFullYear();
     let returnedYears = years.toString();
     //console.log('year: ' + returnedYear);
-    finalResponses = weekDayss[weekDays] + ", " + returnedDays + " " + monthss[months] + " " + returnedYears + " 00:00:00 GMT";
+    let finalResponses = weekDayss[weekDays] + ", " + returnedDays + " " + monthss[months] + " " + returnedYears + " 00:00:00 GMT";
 
     now = true;
 /*
@@ -156,7 +156,7 @@ app.get("/api/:date?", (req, res) => {
     let year = date.getUTCFullYear();
     let returnedYear = year.toString();
     //console.log('year: ' + returnedYear);
-    finalResponse = weekDays[weekDay] + ", " + returnedDay + " " + months[month] + " " + returnedYear + " 00:00:00 GMT";
+    let finalResponse = weekDays[weekDay] + ", " + returnedDay + " " + months[month] + " " + returnedYear + " 00:00:00 GMT";
     console.log('finalResponse: ' + finalResponse);
     console.log('____________');
 

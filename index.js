@@ -98,6 +98,10 @@ app.get("/api/:date?", (req, res) => {
     let year = date.getUTCFullYear();
     let returnedYear = year.toString();
     //console.log('year: ' + returnedYear);
+    if (req.params.date === undefined) {
+      let hour = date.getUTCHours();
+      console.log('hour: ' + hour);
+    }
     let finalResponse = weekDays[weekDay] + ", " + returnedDay + " " + months[month] + " " + returnedYear + " 00:00:00 GMT";
     console.log('finalResponse: ' + finalResponse);
     console.log('____________');

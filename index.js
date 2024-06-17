@@ -98,11 +98,90 @@ app.get("/api/:date?", (req, res) => {
     let year = date.getUTCFullYear();
     let returnedYear = year.toString();
     //console.log('year: ' + returnedYear);
+    let finalResponse;
     if (req.params.date === undefined) {
       let hour = date.getUTCHours();
-      console.log('hour: ' + hour);
+      let returnedHour;
+      if (hour < 10) {
+        if (hour === 1) {
+          returnedHour = "01";
+        } else if (hour === 2) {
+         returnedHour = "02";
+       }else if (hour === 3) {
+         returnedHour = "03";
+       } else if (hour === 4) {
+          returnedHour = "04";
+        } else if (hour === 5) {
+          returnedHour = "05";
+       } else if (hour === 6) {
+          returnedHour = "06";
+       } else if (hour === 7) {
+         returnedHour = "07";
+       } else if (hour === 8) {
+         returnedHour = "08";
+       } else if (hour === 9) {
+         returnedHour = "09";
+       }
+    } else {
+      returnedHour = hour.toString();
     }
-    let finalResponse = weekDays[weekDay] + ", " + returnedDay + " " + months[month] + " " + returnedYear + " 00:00:00 GMT";
+    console.log('hour: ' + hour);
+    let min = date.getUTCMinutes();
+    let returnedMin;
+      if (min < 10) {
+        if (min === 1) {
+          returnedMin = "01";
+        } else if (min === 2) {
+         returnedMin = "02";
+       }else if (min === 3) {
+         returnedMin = "03";
+       } else if (min === 4) {
+          returnedMin = "04";
+        } else if (min === 5) {
+          returnedMin = "05";
+       } else if (min === 6) {
+          returnedMin = "06";
+       } else if (min === 7) {
+         returnedMin = "07";
+       } else if (min === 8) {
+         returnedMin = "08";
+       } else if (min === 9) {
+         returnedMin = "09";
+       }
+    } else {
+      returnedMin = min.toString();
+    }
+    console.log('min: ' + min);
+    let sec = date.getUTCSeconds();
+    let returnedSec;
+      if (sec < 10) {
+        if (sec === 1) {
+          returnedSec = "01";
+        } else if (sec === 2) {
+         returnedSec = "02";
+       }else if (sec === 3) {
+         returnedSec = "03";
+       } else if (sec === 4) {
+          returnedSec = "04";
+        } else if (sec === 5) {
+          returnedSec = "05";
+       } else if (sec === 6) {
+          returnedSec = "06";
+       } else if (sec === 7) {
+         returnedSec = "07";
+       } else if (sec === 8) {
+         returnedSec = "08";
+       } else if (sec === 9) {
+         returnedSec = "09";
+       }
+    } else {
+      returnedSec = sec.toString();
+    }
+    console.log('sec: ' + sec);
+    finalResponse = weekDays[weekDay] + ", " + returnedDay + " " + months[month] + " " + returnedYear + " " + returnedHour + ":" + returnedMin + ":" + returnedSec + " GMT";
+    } else {
+      finalResponse = weekDays[weekDay] + ", " + returnedDay + " " + months[month] + " " + returnedYear + " 00:00:00 GMT";
+    }
     console.log('finalResponse: ' + finalResponse);
     console.log('____________');
 

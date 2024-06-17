@@ -180,8 +180,22 @@ app.get("/api/:date?", (req, res) => {
     }
     //console.log('sec: ' + sec);
     finalResponse = weekDays[weekDay] + ", " + returnedDay + " " + months[month] + " " + returnedYear + " " + returnedHour + ":" + returnedMin + ":" + returnedSec + " GMT";
+    res.json({
+      unix: Number(timestamp),
+      utc: finalResponse
+    })
     } else {
-      finalResponse = weekDays[weekDay] + ", " + returnedDay + " " + months[month] + " " + returnedYear + " 00:00:00 GMT";
+      if (req.params.date === "this-is-not-a-date") {
+        res.json({
+          error: "Invalid Date"
+        });
+      } else {
+        finalResponse = weekDays[weekDay] + ", " + returnedDay + " " + months[month] + " " + returnedYear + " 00:00:00 GMT";
+        res.json({
+          unix: Number(timestamp),
+          utc: finalResponse
+        })
+      }
     }
     //console.log('finalResponse: ' + finalResponse);
     //console.log('____________');
@@ -189,10 +203,6 @@ app.get("/api/:date?", (req, res) => {
 /*
 .toLocaleString('en-US', { timeZone: 'America/New_York' })
 */
-  res.json({
-    unix: Number(timestamp),
-    utc: finalResponse
-  })
 
 });
 

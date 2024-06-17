@@ -33,6 +33,7 @@ function isInt(value) {
 
 app.get("/api/:date?", (req, res) => {
   let timestamp;
+  console.log(req.params.date);
   if (req.params.date === undefined) {
     timestamp = Date.now();
   } else {
@@ -125,7 +126,7 @@ app.get("/api/:date?", (req, res) => {
     } else {
       returnedHour = hour.toString();
     }
-    console.log('hour: ' + hour);
+    //console.log('hour: ' + hour);
     let min = date.getUTCMinutes();
     let returnedMin;
       if (min < 10) {
@@ -151,7 +152,7 @@ app.get("/api/:date?", (req, res) => {
     } else {
       returnedMin = min.toString();
     }
-    console.log('min: ' + min);
+    //console.log('min: ' + min);
     let sec = date.getUTCSeconds();
     let returnedSec;
       if (sec < 10) {
@@ -177,13 +178,13 @@ app.get("/api/:date?", (req, res) => {
     } else {
       returnedSec = sec.toString();
     }
-    console.log('sec: ' + sec);
+    //console.log('sec: ' + sec);
     finalResponse = weekDays[weekDay] + ", " + returnedDay + " " + months[month] + " " + returnedYear + " " + returnedHour + ":" + returnedMin + ":" + returnedSec + " GMT";
     } else {
       finalResponse = weekDays[weekDay] + ", " + returnedDay + " " + months[month] + " " + returnedYear + " 00:00:00 GMT";
     }
-    console.log('finalResponse: ' + finalResponse);
-    console.log('____________');
+    //console.log('finalResponse: ' + finalResponse);
+    //console.log('____________');
 
 /*
 .toLocaleString('en-US', { timeZone: 'America/New_York' })
